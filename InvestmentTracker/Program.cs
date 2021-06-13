@@ -13,11 +13,44 @@ namespace InvestmentTracker
         public static void Main(string[] args)
         {
             Program p = new Program();
-
+            
             //For CoinDesk data collection: 
-            p.CoinDesk(new ChromeDriver()); 
+            //ISSUE Some data is uncollectable, hidden behind duplicate class names.
+            //p.CoinDesk(new ChromeDriver());
+            p.TradingView(new ChromeDriver()); 
+
+
         }
 
+        /// <summary>
+        /// TradingView Data Collector.
+        /// </summary>
+        /// <param name="driver">Chrome driver.</param>
+        public void TradingView(IWebDriver driver)
+        {
+            driver.Navigate().GoToUrl("https://tradingview.com/symbols/ETHUSDT");
+
+            //Current Price
+            string currPrice = driver.FindElement(By.ClassName("tabValue-HYHP1WHx")).Text;
+            Console.WriteLine("Current Price: " + currPrice);
+            //Daily High and Low
+            string dailyLow = driver.FindElement(By.ClassName("js-symbol-header__range-price-l")).GetAttribute("js-symbol-header__range-price=1").ToString();
+            string dailyHigh = driver.FindElement(By.ClassName("js-symbol-header__range-price-r")).Text;
+            Console.WriteLine("Daily Low Price: " + dailyLow);
+            Console.WriteLine("Daily High Price: " + dailyHigh);
+
+            //Daily % Change
+
+            //Visual
+
+            Thread.Sleep(3000);
+            Quit(driver);            
+        }
+
+        /// <summary>
+        /// CoinDesk Data Collector.
+        /// </summary>
+        /// <param name="driver">Chrome driver.</param>
         public void CoinDesk(IWebDriver driver)
         {
             driver.Navigate().GoToUrl("http://www.coindesk.com/price/ethereum");
@@ -36,26 +69,10 @@ namespace InvestmentTracker
             //Quit(driver);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        /// <summary>
+        /// Closes the webpage and command console.
+        /// </summary>
+        /// <param name="driver"></param>
         private void Quit(IWebDriver driver)
         {
             driver.Close();
