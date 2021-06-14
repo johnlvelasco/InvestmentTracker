@@ -13,61 +13,56 @@ namespace InvestmentTracker
         public static void Main(string[] args)
         {
             Program p = new Program();
-            
-            //For CoinDesk data collection: 
-            //ISSUE Some data is uncollectable, hidden behind duplicate class names.
-            //p.CoinDesk(new ChromeDriver());
-            p.TradingView(new ChromeDriver()); 
 
-
+            p.GateIO(new ChromeDriver()); 
         }
-
         /// <summary>
-        /// TradingView Data Collector.
+        /// GateIO Data Collector.
         /// </summary>
         /// <param name="driver">Chrome driver.</param>
-        public void TradingView(IWebDriver driver)
+        public void GateIO(IWebDriver driver)
         {
-            driver.Navigate().GoToUrl("https://tradingview.com/symbols/ETHUSDT");
+            driver.Navigate().GoToUrl("https://www.gate.io/trade/ETH_USDT");
 
             //Current Price
-            string currPrice = driver.FindElement(By.ClassName("tabValue-HYHP1WHx")).Text;
-            Console.WriteLine("Current Price: " + currPrice);
+            string currPrice = driver.FindElement(By.Id("currPrice")).Text;
             //Daily High and Low
-            string dailyLow = driver.FindElement(By.ClassName("js-symbol-header__range-price-l")).GetAttribute("js-symbol-header__range-price=1").ToString();
-            string dailyHigh = driver.FindElement(By.ClassName("js-symbol-header__range-price-r")).Text;
-            Console.WriteLine("Daily Low Price: " + dailyLow);
-            Console.WriteLine("Daily High Price: " + dailyHigh);
-
+            string high = driver.FindElement(By.Id("tHigh")).Text;
+            string low = driver.FindElement(By.Id("tLow")).Text; 
             //Daily % Change
+            string currRate = driver.FindElement(By.Id("currRateNum")).Text;
 
-            //Visual
+            Console.WriteLine("currPrice: " + currPrice + "\nHigh and Low: " + high + " and " + low);
+            Console.WriteLine("currRate: " + currRate);
 
-            Thread.Sleep(3000);
-            Quit(driver);            
+            ObtainVisual(driver); 
+
+            
+
+            Thread.Sleep(6000);
+            Quit(driver); 
         }
 
-        /// <summary>
-        /// CoinDesk Data Collector.
-        /// </summary>
-        /// <param name="driver">Chrome driver.</param>
-        public void CoinDesk(IWebDriver driver)
+
+        public Screenshot ObtainVisual(IWebDriver driver)
         {
-            driver.Navigate().GoToUrl("http://www.coindesk.com/price/ethereum");
+            //Visual: This can be a class/method of its own. Easily accessible to any website's visual I like the most. 
+            string localDate = DateTime.Now.ToString("MM_dd_yyyy");
+            
+            IWebElement ssElement = driver.FindElement(By.Id("kline_tradingView"));
+            string fileName = "C:/Users/johnnyvgoode/source/reposPersonalProjects/InvestmentTracker/Data/Visual_" + localDate + ".png";
 
-            string price = driver.FindElement(By.ClassName("price-large")).Text; 
-            string dailyChange = driver.FindElement(By.ClassName("percent-value-text")).Text; 
-            string stockChart = driver.FindElement(By.ClassName("stock-chart")).Text; 
+            Console.WriteLine("\n\n\nFile Name:  " + fileName);
+            Thread.Sleep(2000); 
+            
+            Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
+            ss.SaveAsFile(fileName , ScreenshotImageFormat.Png);
 
-            Console.WriteLine("Price: " + price);
-            Console.WriteLine("Daily Change: " + dailyChange);
-
-            //My investments..
-            //original price, date, and NET change since date.
-
-            Thread.Sleep(5000); 
-            //Quit(driver);
+            return ss; 
         }
+
+
+
 
         /// <summary>
         /// Closes the webpage and command console.
