@@ -14,7 +14,8 @@ namespace InvestmentTracker
         {
             Program p = new Program();
 
-            p.GateIO(new ChromeDriver()); 
+            //p.GateIO(new ChromeDriver()); 
+            p.GeminiProfile(new ChromeDriver());
         }
         /// <summary>
         /// GateIO Data Collector.
@@ -35,14 +36,23 @@ namespace InvestmentTracker
             Console.WriteLine("currPrice: " + currPrice + "\nHigh and Low: " + high + " and " + low);
             Console.WriteLine("currRate: " + currRate);
 
-            ObtainVisual(driver); 
-
-            
-
+            //ObtainVisual(driver); 
             Thread.Sleep(6000);
             Quit(driver); 
         }
 
+
+        public void GeminiProfile(IWebDriver driver)
+        {
+            driver.Navigate().GoToUrl("https://exchange.gemini.com/signin");
+
+            UserInterface login = new UserInterface();
+            Application.EnableVisualStyles();
+            Application.Run(login); 
+
+            string username =
+
+        }
 
         public Screenshot ObtainVisual(IWebDriver driver)
         {
@@ -50,7 +60,7 @@ namespace InvestmentTracker
             string localDate = DateTime.Now.ToString("MM_dd_yyyy");
             
             IWebElement ssElement = driver.FindElement(By.Id("kline_tradingView"));
-            string fileName = "C:/Users/johnnyvgoode/source/reposPersonalProjects/InvestmentTracker/Data/Visual_" + localDate + ".png";
+            string fileName = "C:/Users/johnnyvgoode/source/reposPersonalProjects/InvestmentTracker1/Data/Visual_" + localDate + ".png";
 
             Console.WriteLine("\n\n\nFile Name:  " + fileName);
             Thread.Sleep(2000); 
@@ -60,9 +70,6 @@ namespace InvestmentTracker
 
             return ss; 
         }
-
-
-
 
         /// <summary>
         /// Closes the webpage and command console.
