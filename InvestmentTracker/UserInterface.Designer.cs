@@ -69,12 +69,14 @@
             // 
             // uxSubmit
             // 
+            this.uxSubmit.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.uxSubmit.Location = new System.Drawing.Point(164, 102);
             this.uxSubmit.Name = "uxSubmit";
             this.uxSubmit.Size = new System.Drawing.Size(93, 23);
             this.uxSubmit.TabIndex = 4;
             this.uxSubmit.Text = "Submit";
             this.uxSubmit.UseVisualStyleBackColor = true;
+            this.uxSubmit.Click += new System.EventHandler(this.uxSubmit_Click);
             // 
             // UserInterface
             // 

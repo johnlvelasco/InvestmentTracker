@@ -18,6 +18,19 @@ namespace InvestmentTracker
             p.GeminiProfile(new ChromeDriver());
         }
         /// <summary>
+        /// For gathering username and password information. 
+        /// </summary>
+        public string[] SignInInfo()
+        {
+            UserInterface signIn = new UserInterface();
+            Application.EnableVisualStyles();
+            Application.Run(signIn);
+
+            return new string[2] { signIn.Username, signIn.Password}; 
+        }
+
+
+        /// <summary>
         /// GateIO Data Collector.
         /// </summary>
         /// <param name="driver">Chrome driver.</param>
@@ -42,15 +55,20 @@ namespace InvestmentTracker
         }
 
 
+
         public void GeminiProfile(IWebDriver driver)
         {
-            driver.Navigate().GoToUrl("https://exchange.gemini.com/signin");
+            //driver.Navigate().GoToUrl("https://exchange.gemini.com/signin");
 
-            UserInterface login = new UserInterface();
-            Application.EnableVisualStyles();
-            Application.Run(login); 
+            //get log in information from a UI method. Later on, ENCRYPT the password. Make many different encryptions.
+            string[] signIn = SignInInfo(); 
+            string username = signIn[0];
+            string password = signIn[1];
 
-            string username =
+            //input signin info for gemini page. 
+            
+
+            Console.WriteLine(username + "\n" + password); 
 
         }
 
