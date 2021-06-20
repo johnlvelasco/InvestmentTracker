@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support;
+using OpenQA.Selenium.Support.UI; 
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,8 +17,9 @@ namespace InvestmentTracker
             Program p = new Program();
 
             //p.GateIO(new ChromeDriver()); 
-            p.GeminiProfile(new ChromeDriver());
+            p.DataCollection_Gemini(new ChromeDriver());
         }
+
         /// <summary>
         /// For gathering username and password information. 
         /// </summary>
@@ -28,7 +31,6 @@ namespace InvestmentTracker
 
             return new string[2] { signIn.Username, signIn.Password}; 
         }
-
 
         /// <summary>
         /// GateIO Data Collector.
@@ -54,24 +56,31 @@ namespace InvestmentTracker
             Quit(driver); 
         }
 
-
-
-        public void GeminiProfile(IWebDriver driver)
+        /// <summary>
+        /// Logs user into their profile, collecting their data, (then logging out and deleting data) - maybe don't do this, only worried about personal privacy.
+        /// </summary>
+        /// <param name="driver">Chrome Driver</param>
+        public void DataCollection_Gemini(IWebDriver driver)
         {
             //driver.Navigate().GoToUrl("https://exchange.gemini.com/signin");
 
             //get log in information from a UI method. Later on, ENCRYPT the password. Make many different encryptions.
+            /*
             string[] signIn = SignInInfo(); 
             string username = signIn[0];
             string password = signIn[1];
-
+            */
             //input signin info for gemini page. 
-            
-
-            Console.WriteLine(username + "\n" + password); 
+            driver.FindElement(By.XPath("//div[@data-testid='emailAddressInput']"));
+            //Console.WriteLine(username + "\n" + password); 
 
         }
 
+        /// <summary>
+        /// Obtains screenshots of the visual on certain websites. Maybe add a param with the website used name. 
+        /// </summary>
+        /// <param name="driver">Chrome Driver.</param>
+        /// <returns>A screenshot of the graph.</returns>
         public Screenshot ObtainVisual(IWebDriver driver)
         {
             //Visual: This can be a class/method of its own. Easily accessible to any website's visual I like the most. 
@@ -92,7 +101,7 @@ namespace InvestmentTracker
         /// <summary>
         /// Closes the webpage and command console.
         /// </summary>
-        /// <param name="driver"></param>
+        /// <param name="driver">Chrome Driver.</param>
         private void Quit(IWebDriver driver)
         {
             driver.Close();

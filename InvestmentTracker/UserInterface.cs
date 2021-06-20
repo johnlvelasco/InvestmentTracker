@@ -28,10 +28,16 @@ namespace InvestmentTracker
         /// </summary>
         public string Password { get; private set;  }
 
+        /// <summary>
+        /// Click event to submit username and password input.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxSubmit_Click(object sender, EventArgs e)
         {
             Username = uxUsername.Text;
             Password = uxPassword.Text;
+            Application.Exit(); 
         }
 
     }
