@@ -35,9 +35,16 @@ namespace InvestmentTracker
         /// <param name="e"></param>
         private void uxSubmit_Click(object sender, EventArgs e)
         {
-            Username = uxUsername.Text;
-            Password = uxPassword.Text;
-            Application.Exit(); 
+            if (!uxUsername.Text.Contains("@"))
+            {
+                MessageBox.Show("Email is missing an \"@\" symbol.");
+            }
+            else
+            {
+                Username = uxUsername.Text;
+                Password = uxPassword.Text;
+                Application.Exit();
+            }
         }
 
     }

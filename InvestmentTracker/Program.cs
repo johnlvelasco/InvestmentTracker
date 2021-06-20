@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using Keys = OpenQA.Selenium.Keys;
 
 namespace InvestmentTracker
 {
@@ -62,18 +63,29 @@ namespace InvestmentTracker
         /// <param name="driver">Chrome Driver</param>
         public void DataCollection_Gemini(IWebDriver driver)
         {
-            //driver.Navigate().GoToUrl("https://exchange.gemini.com/signin");
+            driver.Navigate().GoToUrl("https://exchange.gemini.com/signin");
 
             //get log in information from a UI method. Later on, ENCRYPT the password. Make many different encryptions.
-            /*
             string[] signIn = SignInInfo(); 
             string username = signIn[0];
             string password = signIn[1];
-            */
-            //input signin info for gemini page. 
-            driver.FindElement(By.XPath("//div[@data-testid='emailAddressInput']"));
             //Console.WriteLine(username + "\n" + password); 
 
+            IWebElement usernameEntry = driver.SwitchTo().ActiveElement();
+            usernameEntry.SendKeys(username);
+            usernameEntry.SendKeys(Keys.Tab);
+
+            IWebElement passwordEntry = driver.SwitchTo().ActiveElement();
+            passwordEntry.SendKeys(password);
+            passwordEntry.SendKeys(Keys.Enter);
+
+            //PROBLEM
+            //Authenticator limits my ability to access profile information.
+
+
+
+            Thread.Sleep(3000);
+            Quit(driver);
         }
 
         /// <summary>
