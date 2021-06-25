@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.UI; 
 using System;
+using System.Drawing; 
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
@@ -16,21 +17,10 @@ namespace InvestmentTracker
         public static void Main(string[] args)
         {
             Program p = new Program();
+            IWebDriver driver = new ChromeDriver(); 
 
-            //p.GateIO(new ChromeDriver()); 
-            p.DataCollection_Gemini(new ChromeDriver());
-        }
-
-        /// <summary>
-        /// For gathering username and password information. 
-        /// </summary>
-        public string[] SignInInfo()
-        {
-            UserInterface signIn = new UserInterface();
-            Application.EnableVisualStyles();
-            Application.Run(signIn);
-
-            return new string[2] { signIn.Username, signIn.Password}; 
+            p.GateIO(driver);
+            p.Quit(driver);
         }
 
         /// <summary>
@@ -40,22 +30,27 @@ namespace InvestmentTracker
         public void GateIO(IWebDriver driver)
         {
             driver.Navigate().GoToUrl("https://www.gate.io/trade/ETH_USDT");
+            Thread.Sleep(2000);
+            //driver.Manage().Window.Size = new Size(1, 1); 
 
-            //Current Price
-            string currPrice = driver.FindElement(By.Id("currPrice")).Text;
-            //Daily High and Low
-            string high = driver.FindElement(By.Id("tHigh")).Text;
-            string low = driver.FindElement(By.Id("tLow")).Text; 
-            //Daily % Change
-            string currRate = driver.FindElement(By.Id("currRateNum")).Text;
+            Display d = new Display();
+            //Test 1: Repeat Collection every 5 seconds, for 5 times. 
+            int displays = 1; 
+            while (displays < 5)
+            {
+                string price = driver.FindElement(By.Id("currPrice")).Text;
+                string high = driver.FindElement(By.Id("tHigh")).Text;
+                string low = driver.FindElement(By.Id("tLow")).Text; 
+                string rate = driver.FindElement(By.Id("currRateNum")).Text;
+                d.SetValues(price, rate, high, low);
 
-            Console.WriteLine("currPrice: " + currPrice + "\nHigh and Low: " + high + " and " + low);
-            Console.WriteLine("currRate: " + currRate);
-
+                Application.EnableVisualStyles();
+                Application.Run(d);
+            }
             //ObtainVisual(driver); 
-            Thread.Sleep(6000);
-            Quit(driver); 
+            Thread.Sleep(3000);
         }
+
 
         /// <summary>
         /// Logs user into their profile, collecting their data, (then logging out and deleting data) - maybe don't do this, only worried about personal privacy.
@@ -82,11 +77,13 @@ namespace InvestmentTracker
             //PROBLEM
             //Authenticator limits my ability to access profile information.
 
-
-
             Thread.Sleep(3000);
             Quit(driver);
         }
+
+
+
+
 
         /// <summary>
         /// Obtains screenshots of the visual on certain websites. Maybe add a param with the website used name. 
@@ -109,6 +106,19 @@ namespace InvestmentTracker
 
             return ss; 
         }
+
+        /// <summary>
+        /// For gathering username and password information. 
+        /// </summary>
+        public string[] SignInInfo()
+        {
+            UserInterface signIn = new UserInterface();
+            Application.EnableVisualStyles();
+            Application.Run(signIn);
+
+            return new string[2] { signIn.Username, signIn.Password };
+        }
+
 
         /// <summary>
         /// Closes the webpage and command console.
