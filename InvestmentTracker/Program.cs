@@ -17,9 +17,12 @@ namespace InvestmentTracker
         public static void Main(string[] args)
         {
             Program p = new Program();
-            IWebDriver driver = new ChromeDriver(); 
+            IWebDriver driver = new ChromeDriver();
+            Display d = new Display(driver);
+            d.chromeDriver = driver;
 
-            p.GateIO(driver);
+            Application.Run(d);
+            
             p.Quit(driver);
         }
 
@@ -29,11 +32,7 @@ namespace InvestmentTracker
         /// <param name="driver">Chrome driver.</param>
         public void GateIO(IWebDriver driver)
         {
-            driver.Navigate().GoToUrl("https://www.gate.io/trade/ETH_USDT");
-            Thread.Sleep(2000);
-            //driver.Manage().Window.Size = new Size(1, 1); 
-
-            Display d = new Display();
+            /*Display d = new Display();
             //Test 1: Repeat Collection every 5 seconds, for 5 times. 
             int displays = 1; 
             while (displays < 5)
@@ -43,12 +42,10 @@ namespace InvestmentTracker
                 string low = driver.FindElement(By.Id("tLow")).Text; 
                 string rate = driver.FindElement(By.Id("currRateNum")).Text;
                 d.SetValues(price, rate, high, low);
-
-                Application.EnableVisualStyles();
-                Application.Run(d);
             }
             //ObtainVisual(driver); 
             Thread.Sleep(3000);
+            */
         }
 
 
