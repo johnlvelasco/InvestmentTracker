@@ -18,36 +18,11 @@ namespace InvestmentTracker
         {
             Program p = new Program();
             IWebDriver driver = new ChromeDriver();
-            Display d = new Display(driver);
-            d.chromeDriver = driver;
+            Display display = new Display(driver);
+            display.Driver = driver;
 
-            Application.Run(d);
-            
-            p.Quit(driver);
+            Application.Run(display);
         }
-
-        /// <summary>
-        /// GateIO Data Collector.
-        /// </summary>
-        /// <param name="driver">Chrome driver.</param>
-        public void GateIO(IWebDriver driver)
-        {
-            /*Display d = new Display();
-            //Test 1: Repeat Collection every 5 seconds, for 5 times. 
-            int displays = 1; 
-            while (displays < 5)
-            {
-                string price = driver.FindElement(By.Id("currPrice")).Text;
-                string high = driver.FindElement(By.Id("tHigh")).Text;
-                string low = driver.FindElement(By.Id("tLow")).Text; 
-                string rate = driver.FindElement(By.Id("currRateNum")).Text;
-                d.SetValues(price, rate, high, low);
-            }
-            //ObtainVisual(driver); 
-            Thread.Sleep(3000);
-            */
-        }
-
 
         /// <summary>
         /// Logs user into their profile, collecting their data, (then logging out and deleting data) - maybe don't do this, only worried about personal privacy.
@@ -75,13 +50,12 @@ namespace InvestmentTracker
             //Authenticator limits my ability to access profile information.
 
             Thread.Sleep(3000);
-            Quit(driver);
         }
 
 
 
 
-
+        /*
         /// <summary>
         /// Obtains screenshots of the visual on certain websites. Maybe add a param with the website used name. 
         /// </summary>
@@ -103,6 +77,7 @@ namespace InvestmentTracker
 
             return ss; 
         }
+        */
 
         /// <summary>
         /// For gathering username and password information. 
@@ -115,20 +90,6 @@ namespace InvestmentTracker
 
             return new string[2] { signIn.Username, signIn.Password };
         }
-
-
-        /// <summary>
-        /// Closes the webpage and command console.
-        /// </summary>
-        /// <param name="driver">Chrome Driver.</param>
-        private void Quit(IWebDriver driver)
-        {
-            driver.Close();
-            driver.Quit();
-            Environment.Exit(0);
-        }
-
-
     }
 
 }

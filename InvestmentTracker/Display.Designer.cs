@@ -37,6 +37,8 @@
             this.uxRate = new System.Windows.Forms.Label();
             this.uxHigh = new System.Windows.Forms.Label();
             this.uxLow = new System.Windows.Forms.Label();
+            this.uxVisual = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.uxVisual)).BeginInit();
             this.SuspendLayout();
             // 
             // uxPriceLabel
@@ -53,7 +55,7 @@
             // 
             this.uxLowLabel.AutoSize = true;
             this.uxLowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxLowLabel.Location = new System.Drawing.Point(13, 150);
+            this.uxLowLabel.Location = new System.Drawing.Point(173, 90);
             this.uxLowLabel.Name = "uxLowLabel";
             this.uxLowLabel.Size = new System.Drawing.Size(42, 20);
             this.uxLowLabel.TabIndex = 1;
@@ -63,7 +65,7 @@
             // 
             this.uxHighLabel.AutoSize = true;
             this.uxHighLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxHighLabel.Location = new System.Drawing.Point(13, 120);
+            this.uxHighLabel.Location = new System.Drawing.Point(173, 60);
             this.uxHighLabel.Name = "uxHighLabel";
             this.uxHighLabel.Size = new System.Drawing.Size(46, 20);
             this.uxHighLabel.TabIndex = 2;
@@ -83,7 +85,7 @@
             // 
             this.uxName.AutoSize = true;
             this.uxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxName.Location = new System.Drawing.Point(116, 9);
+            this.uxName.Location = new System.Drawing.Point(134, 9);
             this.uxName.Name = "uxName";
             this.uxName.Size = new System.Drawing.Size(72, 31);
             this.uxName.TabIndex = 8;
@@ -113,7 +115,7 @@
             // 
             this.uxHigh.AutoSize = true;
             this.uxHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxHigh.Location = new System.Drawing.Point(71, 120);
+            this.uxHigh.Location = new System.Drawing.Point(221, 60);
             this.uxHigh.Name = "uxHigh";
             this.uxHigh.Size = new System.Drawing.Size(39, 20);
             this.uxHigh.TabIndex = 11;
@@ -123,17 +125,26 @@
             // 
             this.uxLow.AutoSize = true;
             this.uxLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxLow.Location = new System.Drawing.Point(71, 150);
+            this.uxLow.Location = new System.Drawing.Point(221, 90);
             this.uxLow.Name = "uxLow";
             this.uxLow.Size = new System.Drawing.Size(39, 20);
             this.uxLow.TabIndex = 12;
             this.uxLow.Text = "text";
             // 
+            // uxVisual
+            // 
+            this.uxVisual.Location = new System.Drawing.Point(12, 127);
+            this.uxVisual.Name = "uxVisual";
+            this.uxVisual.Size = new System.Drawing.Size(331, 162);
+            this.uxVisual.TabIndex = 13;
+            this.uxVisual.TabStop = false;
+            // 
             // Display
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(317, 201);
+            this.ClientSize = new System.Drawing.Size(355, 305);
+            this.Controls.Add(this.uxVisual);
             this.Controls.Add(this.uxLow);
             this.Controls.Add(this.uxHigh);
             this.Controls.Add(this.uxRate);
@@ -145,6 +156,8 @@
             this.Controls.Add(this.uxPriceLabel);
             this.Name = "Display";
             this.Text = "Display";
+            this.Load += new System.EventHandler(this.Display_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.uxVisual)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +174,6 @@
         private System.Windows.Forms.Label uxRate;
         private System.Windows.Forms.Label uxHigh;
         private System.Windows.Forms.Label uxLow;
+        private System.Windows.Forms.PictureBox uxVisual;
     }
 }
