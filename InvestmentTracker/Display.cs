@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Keys = OpenQA.Selenium.Keys;
+using System.IO;
 
 namespace InvestmentTracker
 {
@@ -40,7 +41,12 @@ namespace InvestmentTracker
             timer.Tick += new System.EventHandler(timer_Tick);
             timer.Start();
 
-            Screenshot screenshot = ObtainVisual();
+            SetVisual();
+            /*
+            Thread.Sleep(3000);
+            driver.Quit();
+            Environment.Exit(0);
+            */
         }
 
         /// <summary>
@@ -61,41 +67,27 @@ namespace InvestmentTracker
         /// </summary>
         /// <param name="Driver">Chrome Driver.</param>
         /// <returns>A screenshot of the graph.</returns>
-        public Screenshot ObtainVisual()
+        public void SetVisual()
         {
             IWebDriver visualDriver = new ChromeDriver();
 
             visualDriver.Navigate().GoToUrl("https://www.tradingview.com/chart/?symbol=BITSTAMP%3AETHUSD");
-            Size graph = visualDriver.FindElement(By.ClassName("chart-gui-wrapper")).Size;
-            Size priceAxis = visualDriver.FindElement(By.ClassName("price-axis")).Size;
+            //Size graph = visualDriver.FindElement(By.ClassName("chart-gui-wrapper")).Size;
+            //Size priceAxis = visualDriver.FindElement(By.ClassName("price-axis")).Size;
+
+            //Screenshot & Display works, lets try to dark mode it.
+            //visualDriver.SwitchTo().ActiveElement().SendKeys(Keys.Shift + Keys.F10);
+
+
             Screenshot screenshot = ((ITakesScreenshot)visualDriver).GetScreenshot();
-
-            Size visual = new Size(graph.Width + priceAxis.Width, priceAxis.Height);
-
-
-
-
             string localDate = DateTime.Now.ToString("MM_dd_yyyy");
-            string fileName = "C:/Users/johnnyvgoode/Desktop/Personal Projects/Visual_" + localDate + ".png";
+            string path = "C:/Users/johnv/Desktop/Personal Projects/Visual_" + localDate + ".png";
+            screenshot.SaveAsFile(path, ScreenshotImageFormat.Png);
 
-            Screenshot ss = ((ITakesScreenshot)visualDriver).GetScreenshot();
-            
-            ss.SaveAsFile(fileName, ScreenshotImageFormat.Png);
+            uxVisual.Image = Image.FromFile(path);
+            uxVisual.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            /*
-            //Visual: This can be a class/method of its own. Easily accessible to any website's visual I like the most. 
-            string localDate = DateTime.Now.ToString("MM_dd_yyyy");
-
-            IWebElement ssElement = Driver.FindElement(By.Id("kline_tradingView"));
-            string fileName = "C:/Users/johnnyvgoode/source/reposPersonalProjects/InvestmentTracker1/Data/Visual_" + localDate + ".png";
-
-            Console.WriteLine("\n\n\nFile Name:  " + fileName);
-            Thread.Sleep(2000);
-
-            Screenshot ss = ((ITakesScreenshot)Driver).GetScreenshot();
-            ss.SaveAsFile(fileName, ScreenshotImageFormat.Png);
-            */
-            return ss;
+            //visualDriver.Quit();
         }
 
 

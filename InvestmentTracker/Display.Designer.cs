@@ -45,9 +45,10 @@
             // 
             this.uxPriceLabel.AutoSize = true;
             this.uxPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPriceLabel.Location = new System.Drawing.Point(13, 60);
+            this.uxPriceLabel.Location = new System.Drawing.Point(17, 74);
+            this.uxPriceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxPriceLabel.Name = "uxPriceLabel";
-            this.uxPriceLabel.Size = new System.Drawing.Size(52, 20);
+            this.uxPriceLabel.Size = new System.Drawing.Size(67, 25);
             this.uxPriceLabel.TabIndex = 0;
             this.uxPriceLabel.Text = "Price: ";
             // 
@@ -55,9 +56,10 @@
             // 
             this.uxLowLabel.AutoSize = true;
             this.uxLowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxLowLabel.Location = new System.Drawing.Point(173, 90);
+            this.uxLowLabel.Location = new System.Drawing.Point(231, 111);
+            this.uxLowLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLowLabel.Name = "uxLowLabel";
-            this.uxLowLabel.Size = new System.Drawing.Size(42, 20);
+            this.uxLowLabel.Size = new System.Drawing.Size(54, 25);
             this.uxLowLabel.TabIndex = 1;
             this.uxLowLabel.Text = "Low:";
             // 
@@ -65,9 +67,10 @@
             // 
             this.uxHighLabel.AutoSize = true;
             this.uxHighLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxHighLabel.Location = new System.Drawing.Point(173, 60);
+            this.uxHighLabel.Location = new System.Drawing.Point(231, 74);
+            this.uxHighLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxHighLabel.Name = "uxHighLabel";
-            this.uxHighLabel.Size = new System.Drawing.Size(46, 20);
+            this.uxHighLabel.Size = new System.Drawing.Size(58, 25);
             this.uxHighLabel.TabIndex = 2;
             this.uxHighLabel.Text = "High:";
             // 
@@ -75,9 +78,10 @@
             // 
             this.uxRateLabel.AutoSize = true;
             this.uxRateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxRateLabel.Location = new System.Drawing.Point(13, 90);
+            this.uxRateLabel.Location = new System.Drawing.Point(17, 111);
+            this.uxRateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxRateLabel.Name = "uxRateLabel";
-            this.uxRateLabel.Size = new System.Drawing.Size(48, 20);
+            this.uxRateLabel.Size = new System.Drawing.Size(58, 25);
             this.uxRateLabel.TabIndex = 3;
             this.uxRateLabel.Text = "Rate:";
             // 
@@ -85,9 +89,10 @@
             // 
             this.uxName.AutoSize = true;
             this.uxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxName.Location = new System.Drawing.Point(134, 9);
+            this.uxName.Location = new System.Drawing.Point(179, 11);
+            this.uxName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxName.Name = "uxName";
-            this.uxName.Size = new System.Drawing.Size(72, 31);
+            this.uxName.Size = new System.Drawing.Size(89, 39);
             this.uxName.TabIndex = 8;
             this.uxName.Text = "ETH";
             // 
@@ -95,9 +100,10 @@
             // 
             this.uxPrice.AutoSize = true;
             this.uxPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxPrice.Location = new System.Drawing.Point(71, 60);
+            this.uxPrice.Location = new System.Drawing.Point(95, 74);
+            this.uxPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxPrice.Name = "uxPrice";
-            this.uxPrice.Size = new System.Drawing.Size(39, 20);
+            this.uxPrice.Size = new System.Drawing.Size(47, 25);
             this.uxPrice.TabIndex = 9;
             this.uxPrice.Text = "text";
             // 
@@ -105,9 +111,10 @@
             // 
             this.uxRate.AutoSize = true;
             this.uxRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxRate.Location = new System.Drawing.Point(71, 90);
+            this.uxRate.Location = new System.Drawing.Point(95, 111);
+            this.uxRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxRate.Name = "uxRate";
-            this.uxRate.Size = new System.Drawing.Size(39, 20);
+            this.uxRate.Size = new System.Drawing.Size(47, 25);
             this.uxRate.TabIndex = 10;
             this.uxRate.Text = "text";
             // 
@@ -115,9 +122,10 @@
             // 
             this.uxHigh.AutoSize = true;
             this.uxHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxHigh.Location = new System.Drawing.Point(221, 60);
+            this.uxHigh.Location = new System.Drawing.Point(295, 74);
+            this.uxHigh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxHigh.Name = "uxHigh";
-            this.uxHigh.Size = new System.Drawing.Size(39, 20);
+            this.uxHigh.Size = new System.Drawing.Size(47, 25);
             this.uxHigh.TabIndex = 11;
             this.uxHigh.Text = "text";
             // 
@@ -125,25 +133,27 @@
             // 
             this.uxLow.AutoSize = true;
             this.uxLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxLow.Location = new System.Drawing.Point(221, 90);
+            this.uxLow.Location = new System.Drawing.Point(295, 111);
+            this.uxLow.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uxLow.Name = "uxLow";
-            this.uxLow.Size = new System.Drawing.Size(39, 20);
+            this.uxLow.Size = new System.Drawing.Size(47, 25);
             this.uxLow.TabIndex = 12;
             this.uxLow.Text = "text";
             // 
             // uxVisual
             // 
-            this.uxVisual.Location = new System.Drawing.Point(12, 127);
+            this.uxVisual.Location = new System.Drawing.Point(16, 156);
+            this.uxVisual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.uxVisual.Name = "uxVisual";
-            this.uxVisual.Size = new System.Drawing.Size(331, 162);
+            this.uxVisual.Size = new System.Drawing.Size(441, 199);
             this.uxVisual.TabIndex = 13;
             this.uxVisual.TabStop = false;
             // 
             // Display
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 305);
+            this.ClientSize = new System.Drawing.Size(473, 375);
             this.Controls.Add(this.uxVisual);
             this.Controls.Add(this.uxLow);
             this.Controls.Add(this.uxHigh);
@@ -154,6 +164,7 @@
             this.Controls.Add(this.uxHighLabel);
             this.Controls.Add(this.uxLowLabel);
             this.Controls.Add(this.uxPriceLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Display";
             this.Text = "Display";
             this.Load += new System.EventHandler(this.Display_Load);
